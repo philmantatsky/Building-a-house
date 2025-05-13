@@ -1,0 +1,120 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+// Phillip Mantatsky
+// 1/27/25
+// Description: creates basic house art using keyboard keys.
+// user is able to manipulate how many stories the house has.
+// Second part is my original artwork using keyboard keys.
+// ====================
+// ====================
+// ====================
+// =====
+// =====
+// =====
+// ====================
+// ====================
+// ====================
+// =====
+// =====
+// =====
+// ====================
+// ====================
+// ====================
+
+int main() {
+    // The menu output
+    int choice;
+    cout << "Program 1: House" << endl;
+    cout << "Which option would you like?" << endl;
+    cout << "1. Display house" << endl;
+    cout << "2. Display original art" << endl;
+    cout << "Your choice: ";
+    cin >> choice;
+
+    // The prompt for entering the number of floors, if the user chooses the house
+    int floors;
+    if (choice == 1) {
+        cout << "How many floors should the house have? ";
+        cin >> floors;
+        string window;
+        string windowTop;
+        int count = 0;
+        string space = "";
+        string firstFloor = "";
+
+        // creating reusable window and space patterns
+        for (int count1 = 0; count1 < floors; count1++) {
+            window += "|  |_";
+            space += " ";
+        }
+
+        //creating reusable sides specifically for the first floor (door)
+        for (int count2 = 1; count2 < floors; count2++) {
+            firstFloor += "_|  |";
+        }
+
+        for (int count3 = 0; count3 < floors - 1; count3++) {
+            windowTop += "_    ";
+            
+        }
+        
+        int roofTiles = 7 + ((floors - 1)* 3);
+        
+        cout << space << string(roofTiles, '_') << endl;
+
+        int roofSpaces = floors - 1;
+        //creating layout for roof including specific spaces for each layer
+        for (int count4 = 0; count4 < floors; count4++) {
+            cout << string(roofSpaces, ' ') << "/" << string(roofTiles, ' ') << "\\" << endl;
+            roofSpaces -= 1;
+            roofTiles += 2;
+        }
+        
+        // putting basic house parts together (not first floor/roof)
+        while (count < floors - 1) {
+            cout << "|   " << windowTop << "_   " << "|" << endl;
+            cout << window << "|  |" << endl;
+            cout << "|" << string(window.length() + 2, ' ') << "|" << endl;
+            count++;
+        }
+        // creating first floor and dealing with door
+        cout << "|   " << windowTop << "_   " << "|" << endl;
+        cout << "|  | |" << "  |" << firstFloor << endl;
+        cout << "|  | |" << string(window.length() - 3, ' ') << "|" << endl;
+        cout << string(window.length() + 4, '/') << endl;
+
+        // redisplaying menu
+        cout << "Program 1: House" << endl;
+        cout << "Which option would you like?" << endl;
+        cout << "1. Display house" << endl;
+        cout << "2. Display original art" << endl;
+        cout << "Your choice: ";
+        cin >> choice;
+    }
+    // displaying my original artwork using loops and creating a giant 'E'
+    if (choice == 2) {
+        for (int count = 0; count < 3; count++) {
+            cout << string(20, '=') << endl;
+        }
+        for (int count1 = 0; count1 < 3; count1++) {
+            cout << string(5, '=') << endl;
+        }
+        for (int count2 = 0; count2 < 3; count2++) {
+            cout << string(20, '=') << endl;
+        }
+        for (int count3 = 0; count3 < 3; count3++) {
+            cout << string(5, '=') << endl;
+        }
+        for (int count4 = 0; count4 < 3; count4++) {
+            cout << string(20, '=') << endl;
+        }
+        // redisplaying menu
+        cout << "Program 1: House" << endl;
+        cout << "Which option would you like?" << endl;
+        cout << "1. Display house" << endl;
+        cout << "2. Display original art" << endl;
+        cout << "Your choice: ";
+        cin >> choice;
+    }
+}
